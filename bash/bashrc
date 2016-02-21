@@ -1,0 +1,14 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+run_scripts (){
+  for script in $1/*; do
+    [[ -x $script ]] && . $script
+  done
+}
+run_scripts "$HOME/.dots/bash/bashrc.d"
+
+HISTSIZE=15000
+HISTCONTROL=ignoreboth
+
+export PATH=$PATH:$HOME/System/bin
